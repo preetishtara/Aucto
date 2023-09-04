@@ -42,9 +42,6 @@ class User(AbstractBaseUser):
         unique=True,
     )
     name = models.CharField(max_length=255)
-    Phone = models.IntegerField()
-    Address = models.CharField(max_length=200)
-    College = models.CharField(max_length=100)
     is_admin = models.BooleanField(default=False)
 
     objects = UserManager()

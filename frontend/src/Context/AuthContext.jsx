@@ -12,11 +12,7 @@ export const AuthProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("authToken"))
       : null
   );
-  const [user, setUser] = useState(
-    localStorage.getItem("authToken")
-      ? jwt_decode(localStorage.getItem("authToken"))
-      : null
-  );
+  const [user, setUser] = useState();
 
   let navigateTo = useNavigate();
 
@@ -39,6 +35,7 @@ export const AuthProvider = ({ children }) => {
       setUser(jwt_decode(data.access));
       localStorage.setItem("authToken", JSON.stringify(data));
       navigateTo("/");
+      console.log(user);
       alert("login successful");
     } else {
       alert("Something went wrong!");
